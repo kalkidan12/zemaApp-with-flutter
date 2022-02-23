@@ -13,12 +13,13 @@ void main() {
 class MyApp extends StatelessWidget {
   // Using "static" so that we can easily access it later
   static final ValueNotifier<ThemeMode> themeNotifier =
-      ValueNotifier(ThemeMode.light);
+  ValueNotifier(ThemeMode.light);
 
   Widget SplashScreen = SplashScreenView(
       navigateRoute: HomePage(),
       duration: 5000,
       imageSize: 130,
+      speed: 800,
       imageSrc: "assets/images/splash.jpg",
       text: "Safe Graphics",
       textType: TextType.ColorizeAnimationText,
