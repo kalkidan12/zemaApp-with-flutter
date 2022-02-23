@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.zema">
+    package="com.kalyapps.zema">
    <application
-        android:label="zema"
+        android:label="ዜማ ኳየር"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
