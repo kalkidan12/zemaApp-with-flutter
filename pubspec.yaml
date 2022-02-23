@@ -126,3 +126,4 @@ splash_screen_view:
   #info_plist_files:
   #  - 'ios/Runner/Info-Debug.plist'
   #  - 'ios/Runner/Info-Release.plist'
+  #flutter build appbundle
