@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:zema/Components/dropdown/feedback_page.dart';
 import 'package:zema/Components/home_page.dart';
+import 'package:zema/Components/search_page.dart';
 import 'package:zema/main.dart';
 import 'contact_us_page.dart';
 
@@ -250,7 +251,8 @@ class _AboutDropPageState extends State<AboutDropPage> {
                              },icon: Icon(Icons.arrow_back)),
                 actions: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
                     icon: Icon(Icons.search),
                   ),
                   PopupMenuButton<int>(

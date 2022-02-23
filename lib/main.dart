@@ -1,6 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
+import 'package:splash_screen_view/SplashScreenView.dart';
 
 import 'Components/home_page.dart';
 import 'Components/teaching_page.dart';
@@ -13,6 +14,25 @@ class MyApp extends StatelessWidget {
   // Using "static" so that we can easily access it later
   static final ValueNotifier<ThemeMode> themeNotifier =
       ValueNotifier(ThemeMode.light);
+
+  Widget SplashScreen = SplashScreenView(
+      navigateRoute: HomePage(),
+      duration: 5000,
+      imageSize: 130,
+      imageSrc: "assets/images/splash.jpg",
+      text: "Safe Graphics",
+      textType: TextType.ColorizeAnimationText,
+      textStyle: TextStyle(
+        fontSize: 15.0,
+      ),
+      colors: [
+        Colors.purple,
+        Colors.blue,
+        Colors.yellow,
+        Colors.red,
+      ],
+      backgroundColor: Colors.white,
+    );
   @override
   Widget build(BuildContext context) {
   return ValueListenableBuilder<ThemeMode>(
@@ -30,7 +50,8 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(primarySwatch: Colors.green,primaryColor: Colors.green),
             darkTheme: ThemeData.dark(),
             themeMode: currentMode,
-            home: HomePage(),
+            home: SplashScreen,
+            
           );
         });
   }

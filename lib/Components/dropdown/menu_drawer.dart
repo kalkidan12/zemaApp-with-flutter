@@ -12,6 +12,7 @@ import 'package:zema/Components/dropdown/about_drop_down.dart';
 import 'package:zema/Components/dropdown/contact_us_page.dart';
 import 'package:zema/Components/dropdown/feedback_page.dart';
 import 'package:zema/Components/home_page.dart';
+import 'package:zema/Components/search_page.dart';
 import 'package:zema/main.dart';
 
 
@@ -252,7 +253,8 @@ class _MenuDropPageState extends State<MenuDrawerPage> {
                              },icon: Icon(Icons.arrow_back)),
               actions: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: ()=>Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
                   icon: Icon(Icons.search),
                 ),
                 PopupMenuButton<int>(

@@ -9,6 +9,7 @@ import 'package:zema/Components/dropdown/feedback_page.dart';
 import 'package:zema/Components/dropdown/menu_drawer.dart';
 import 'package:zema/Components/dropdown/teaching_drawer.dart';
 import 'package:zema/Components/favourite_page.dart';
+import 'package:zema/Components/search_page.dart';
 
 import '../main.dart';
 import 'mezmur_page.dart';
@@ -94,9 +95,13 @@ class _HomePageState extends State<HomePage> {
                     :  Color.fromARGB(255, 102, 97, 97),
     
                   actions: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.search),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: IconButton(
+                        onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
+                        icon: Icon(Icons.search),
+                      ),
                     ),
                     
                     PopupMenuButton<int>(
@@ -109,10 +114,7 @@ class _HomePageState extends State<HomePage> {
                     PopupMenuItem<int>(
                       value: 0,
                       child: Text('መዝሙሮች'),
-                      // onTap: () {
-                      //       Navigator.push(
-                      //       context, MaterialPageRoute(builder: (context) => HomePage()));
-                      //       },
+                      
                     ),
                     PopupMenuItem<int>(
                       value: 1,
@@ -139,6 +141,7 @@ class _HomePageState extends State<HomePage> {
     
                     
                   ],
+                  
                 ),
               ),
             )),

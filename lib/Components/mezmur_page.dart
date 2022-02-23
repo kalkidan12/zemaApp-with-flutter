@@ -63,85 +63,79 @@ class _MezmurPageState extends State<MezmurPage> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        exitDialog();
-        return Future.value(false);
-      },
-      child: Scaffold(
-        body: ListView.builder(
-            itemCount: title.length,
-            itemBuilder: (BuildContext context, int index) {
-              String titleName = title[index];
-              bool isFavoured = favouredTitle.contains(titleName);
-              return Center(
-                child: InkWell(
-                  child: Container(
-                    height: 70,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                //const Padding(padding: EdgeInsets.all(10)),
+    return Scaffold(
+      body: ListView.builder(
+          itemCount: title.length,
+          itemBuilder: (BuildContext context, int index) {
+            String titleName = title[index];
+            bool isFavoured = favouredTitle.contains(titleName);
+            return Center(
+              child: InkWell(
+                child: Container(
+                  height: 70,
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          const SizedBox(
+                            width: 20,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              //const Padding(padding: EdgeInsets.all(10)),
 
-                                Text(
-                                  title[index],
-                                  style: const TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w500,),
-                                ),
-                              ],
-                            ),
-                            const Spacer(),
-                            Container(
-                              alignment: Alignment.centerRight,
-                              child: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      if (isFavoured) {
-                                        favouredTitle.remove(titleName);
-                                      } else {
-                                        favouredTitle.add(
-                                          titleName,
-                                        );
-                                      }
-                                    });
-                                  },
-                                  icon: Icon(
-                                      isFavoured
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
-                                      color: isFavoured ? Colors.green : null)),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            )
-                          ],
-                        ),
+                              Text(
+                                title[index],
+                                style: const TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,),
+                              ),
+                            ],
+                          ),
+                          const Spacer(),
+                          Container(
+                            alignment: Alignment.centerRight,
+                            child: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (isFavoured) {
+                                      favouredTitle.remove(titleName);
+                                    } else {
+                                      favouredTitle.add(
+                                        titleName,
+                                      );
+                                    }
+                                  });
+                                },
+                                icon: Icon(
+                                    isFavoured
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: isFavoured ? Colors.green : null)),
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          )
+                        ],
                       ),
                     ),
                   ),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MezmurDetail(
-                              mezmurDataModel: MezmurData[index],
-                            )));
-                  },
                 ),
-              );
-            }),
-        drawer: NavigationDrawerWidget(),
-      ),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => MezmurDetail(
+                            mezmurDataModel: MezmurData[index],
+                          )));
+                },
+              ),
+            );
+          }),
+      drawer: NavigationDrawerWidget(),
     );
   }
 }
