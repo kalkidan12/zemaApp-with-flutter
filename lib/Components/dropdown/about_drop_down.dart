@@ -1,23 +1,21 @@
 // ignore_for_file: deprecated_member_use, prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:launch_review/launch_review.dart';
 import 'package:rating_dialog/rating_dialog.dart';
-import 'about_page.dart';
+import 'package:zema/Components/dropdown/feedback_page.dart';
+import 'package:zema/Components/home_page.dart';
+import 'package:zema/main.dart';
+import 'contact_us_page.dart';
 
-class SettingPage extends StatefulWidget {
-  const SettingPage({Key? key}) : super(key: key);
+class AboutDropPage extends StatefulWidget {
+  const AboutDropPage({Key? key}) : super(key: key);
 
   @override
-  _SettingPageState createState() => _SettingPageState();
+  _AboutDropPageState createState() => _AboutDropPageState();
 }
 
-class _SettingPageState extends State<SettingPage> {
+class _AboutDropPageState extends State<AboutDropPage> {
   void show() {
     showDialog(
         context: context,
@@ -228,6 +226,7 @@ class _SettingPageState extends State<SettingPage> {
         });
   }
 
+  var _title = 'About';
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -237,36 +236,59 @@ class _SettingPageState extends State<SettingPage> {
       },
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(200),
-          child: Container(
-            color: Colors.blueGrey,
-            child: Column(
-              children: <Widget>[
-                AppBar(
-                  backgroundColor: Colors.blueGrey,
-                  elevation: 0,
-                ),
-                Container(
-                  padding: const EdgeInsets.all(10),
-                  width: 300,
-                  child: const Text(
-                      "ኢየሱስም እንዲህ አላቸው፦ የሕይወት እንጀራ እኔ ነኝ፤ ወደ እኔ የሚመጣ ከቶ አይራብም በእኔ የሚያምንም ሁሌጊዜ ከቶ አይጠማም።                                              (ዮሐ 6: 35)",
-                      style: TextStyle(
-                        color: Colors.amber,
-                        fontSize: 17,
+          preferredSize: const Size.fromHeight(70),
+          child: SafeArea(
+            child: Card(
+              child: AppBar(
+                title: Text(_title),
+                backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
+                    ? Colors.green
+                    : Color.fromARGB(255, 102, 97, 97),
+                leading: IconButton(onPressed: () {
+                               Navigator.push(
+                               context, MaterialPageRoute(builder: (context) => HomePage()));
+                             },icon: Icon(Icons.arrow_back)),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.search),
+                  ),
+                  PopupMenuButton<int>(
+                    icon: Icon(Icons.arrow_drop_down_circle_outlined),
+                    color: MyApp.themeNotifier.value == ThemeMode.light
+                        ? Color.fromARGB(255, 244, 247, 244)
+                        : Color.fromARGB(255, 70, 68, 68),
+                    
+                    onSelected: (item) => onSelected(context, item),
+                    itemBuilder: (context) => [
+                      PopupMenuItem<int>(
+                        value: 0,
+                        child: Text('መዝሙሮች'),
+                        
                       ),
-                      textAlign: TextAlign.left),
-                ),
-              ],
+                      PopupMenuItem<int>(
+                        value: 1,
+                        child: Text('Contact Us'),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 2,
+                        child: Text('Feedback'),
+                       
+                      ),
+                      PopupMenuItem<int>(
+                        value: 3,
+                        child: Text('About'),
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
-          ),
-        ),
-        extendBodyBehindAppBar: false,
+          )),
+      extendBodyBehindAppBar: false,
+        
         body: Container(
-          decoration: const BoxDecoration(
-            color: Colors.white,
-            // borderRadius: BorderRadius.only(topRight: Radius.circular(50),
-          ),
+          
           child: ListView(
             children: <Widget>[
               const SizedBox(
@@ -324,7 +346,7 @@ class _SettingPageState extends State<SettingPage> {
                   ),
                   title: Text('Rate and Review'),
                 ),
-                // onTap: show,
+                onTap: show,
               ),
               const Divider(),
               InkWell(
@@ -336,7 +358,7 @@ class _SettingPageState extends State<SettingPage> {
                   title: Text('About App'),
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => AboutPage()));
+                        MaterialPageRoute(builder: (context) => ContactPage()));
                   },
                 ),
               ),
@@ -358,5 +380,30 @@ class _SettingPageState extends State<SettingPage> {
         ),
       ),
     );
+  }
+}
+
+void onSelected(BuildContext context, int item) {
+  switch (item) {
+    case 0:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+      break;
+    case 1:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => ContactPage()),
+      );
+      break;
+    case 2:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FeedBack()),
+      );
+      break;
+    case 3:
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => AboutDropPage()),
+        (route) => false,
+      );
   }
 }

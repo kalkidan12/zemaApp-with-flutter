@@ -1,8 +1,11 @@
 // ignore_for_file: unused_import, avoid_web_libraries_in_flutter
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:zema/Components/dropdown/contact_us_page.dart';
+import 'package:zema/Components/dropdown/feedback_page.dart';
+import 'package:zema/Components/home_page.dart';
+import 'package:zema/Components/menu_page.dart';
 import 'mezmur_page.dart';
 
 class MezmurDataModel {
@@ -22,9 +25,9 @@ class MezmurDetail extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.green,
         title: Text(
-          'mezmurDataModel.title',
+          mezmurDataModel.title,
           style: const TextStyle(
-            fontSize: 17,
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -54,7 +57,7 @@ class MezmurDetail extends StatelessWidget {
                 Text(
                   mezmurDataModel.content,
                   style: const TextStyle(
-                    fontSize: 17,
+                    fontSize: 15,
                     letterSpacing: 0.6,
                   ),
                   textAlign: TextAlign.left,
@@ -67,3 +70,4 @@ class MezmurDetail extends StatelessWidget {
     );
   }
 }
+

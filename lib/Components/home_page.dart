@@ -1,12 +1,19 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rating_dialog/rating_dialog.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:zema/Components/dropdown/about_drop_down.dart';
+import 'package:zema/Components/dropdown/contact_us_page.dart';
+import 'package:zema/Components/dropdown/feedback_page.dart';
+import 'package:zema/Components/dropdown/menu_drawer.dart';
+import 'package:zema/Components/dropdown/teaching_drawer.dart';
+import 'package:zema/Components/favourite_page.dart';
 
 import '../main.dart';
-import 'drawer.dart';
 import 'mezmur_page.dart';
-import 'setting_page.dart';
+import 'menu_page.dart';
+import 'teaching_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,9 +27,9 @@ class _HomePageState extends State<HomePage> {
   String _title = 'መዝሙሮች';
   static const List<Widget> _pages = <Widget>[
     MezmurPage(),
-    SettingPage(),
-    MezmurPage(),
-    SettingPage(),
+    FavoritePage(),
+    TeachingPage(),
+    MenuPage(),
   ];
 
   GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
@@ -50,6 +57,21 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  void show() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return RatingDialog(
+            title: Text("Rate And Review Elet Injera"),
+            submitButtonText: "Submit",
+            onSubmitted: (rating) {
+              // ignore: avoid_print
+              print("rating");
+            },
+          );
+        });
   }
 
 
@@ -86,23 +108,30 @@ class _HomePageState extends State<HomePage> {
                       itemBuilder: (context) => [
                     PopupMenuItem<int>(
                       value: 0,
-                      child: Text('Settings'),
+                      child: Text('መዝሙሮች'),
+                      // onTap: () {
+                      //       Navigator.push(
+                      //       context, MaterialPageRoute(builder: (context) => HomePage()));
+                      //       },
                     ),
                     PopupMenuItem<int>(
                       value: 1,
-                      child: Text('Share'),
+                      child: Text('Contact Us'),
+                      
                     ),
-                    PopupMenuDivider(),
                     PopupMenuItem<int>(
                       value: 2,
-                      child: Row(
-                        children: [
-                          Icon(Icons.logout),
-                          const SizedBox(width: 8),
-                          Text('Sign Out'),
-                        ],
-                      ),
+                      child: Text('Feedback'),
+                      // onTap: show,
                     ),
+                    PopupMenuItem<int>(
+                      value: 3,
+                      child: Text('About'),
+                      
+                    ),
+
+                    
+                    
                   ],
                     )
     
@@ -148,7 +177,7 @@ class _HomePageState extends State<HomePage> {
                 Text('ትምህርቶች', style: TextStyle(fontWeight: FontWeight.w500)),
             onTap: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
+                  context, MaterialPageRoute(builder: (context) => TeachingDrawerPage()));
             },
           ),
           ListTile(
@@ -160,7 +189,10 @@ class _HomePageState extends State<HomePage> {
           ListTile(
             leading: Icon(Icons.help, color: Colors.green[500]),
             title: Text('ስለ እኛ', style: TextStyle(fontWeight: FontWeight.w500)),
-            onTap: () => null,
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MenuDrawerPage()));
+            },
           ),
           ListTile(
             leading: Icon(
@@ -272,18 +304,26 @@ class _HomePageState extends State<HomePage> {
     switch (item) {
       case 0:
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => MezmurPage()),
+          MaterialPageRoute(builder: (context) => HomePage()),
         );
         break;
       case 1:
         Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => MezmurPage()),
+          MaterialPageRoute(builder: (context) => ContactPage()),
         );
         break;
       case 2:
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => FeedBack()),
+        );
+        break;
+      case 3:
         Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => MezmurPage()),
+          MaterialPageRoute(builder: (context) => AboutDropPage()),
           (route) => false,
         );
     }
   }
+
+
+  

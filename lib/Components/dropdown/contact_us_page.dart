@@ -1,55 +1,75 @@
-// ignore_for_file: unused_import, prefer_const_constructors
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:zema/Components/dropdown/about_drop_down.dart';
+import 'package:zema/Components/dropdown/feedback_page.dart';
+import 'package:zema/Components/home_page.dart';
+import 'package:zema/main.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({Key? key}) : super(key: key);
+
+class ContactPage extends StatefulWidget {
+  const ContactPage({Key? key}) : super(key: key);
 
   @override
-  _AboutPageState createState() => _AboutPageState();
+  _ContactPageState createState() => _ContactPageState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _ContactPageState extends State<ContactPage> {
+  var _title = 'Contact Us';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(200),
-        child: Container(
-          color: Colors.blueGrey,
-          child: Column(
-            children: <Widget>[
-              AppBar(
-                title: const Text(
-                  "About",
-                  style: TextStyle(
-                    color: Colors.amber,
-                    fontSize: 20,
+          preferredSize: const Size.fromHeight(70),
+          child: SafeArea(
+            child: Card(
+              child: AppBar(
+                title: Text(_title),
+                backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
+                    ? Colors.green
+                    : Color.fromARGB(255, 102, 97, 97),
+                leading: IconButton(onPressed: () {
+                               Navigator.push(
+                               context, MaterialPageRoute(builder: (context) => HomePage()));
+                             },icon: Icon(Icons.arrow_back)),
+                actions: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.search),
                   ),
-                ),
-                centerTitle: false,
-                backgroundColor: Colors.blueGrey,
-                elevation: 0,
+                  PopupMenuButton<int>(
+                    icon: Icon(Icons.arrow_drop_down_circle_outlined),
+                    color: MyApp.themeNotifier.value == ThemeMode.light
+                        ? Color.fromARGB(255, 244, 247, 244)
+                        : Color.fromARGB(255, 70, 68, 68),
+                    onSelected: (item) => onSelected(context, item),
+                    itemBuilder: (context) => [
+                      PopupMenuItem<int>(
+                        value: 0,
+                        child: Text('መዝሙሮች'),
+                        // onTap: () {
+                        //       Navigator.push(
+                        //       context, MaterialPageRoute(builder: (context) => HomePage()));
+                        //       },
+                      ),
+                      PopupMenuItem<int>(
+                        value: 1,
+                        child: Text('Contact Us'),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 2,
+                        child: Text('Feedback'),
+                        // onTap: show,
+                      ),
+                      PopupMenuItem<int>(
+                        value: 3,
+                        child: Text('About'),
+                      ),
+                    ],
+                  )
+                ],
               ),
-              Container(
-                padding: const EdgeInsets.all(10),
-                width: 300,
-                child: const Text(
-                    "Thank you for using this app please support us by sharing and rating this app on playstore",
-                    style: TextStyle(
-                      color: Colors.amber,
-                      fontSize: 16,
-                    ),
-                    textAlign: TextAlign.left),
-              ),
-            ],
-          ),
-        ),
-      ),
+            ),
+          )),
       extendBodyBehindAppBar: false,
       body: SingleChildScrollView(
         child: Column(
@@ -75,12 +95,12 @@ class _AboutPageState extends State<AboutPage> {
                 children: [
                   Card(
                     child: ListTile(
-                        leading: const Icon(Icons.mail, color: Colors.amber),
+                        leading: const Icon(Icons.mail, color: Colors.green),
                         title: const Text("Gmail contact"),
                         subtitle: Padding(
                           padding: const EdgeInsets.only(top: 5.0),
                           child: const Text("kalget12@gmail.com",
-                              style: TextStyle(color: Colors.amber)),
+                              style: TextStyle(color: Colors.green)),
                         ),
                         onTap: () async {
                           launch('mailto: kalget12@gmail.com?subject');
@@ -88,12 +108,12 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.call, color: Colors.amber),
+                      leading: const Icon(Icons.call, color: Colors.green),
                       title: const Text("Phone contact"),
                       subtitle: Padding(
                         padding: const EdgeInsets.only(top: 5.0),
                         child: const Text("0961524406",
-                            style: TextStyle(color: Colors.amber)),
+                            style: TextStyle(color: Colors.green)),
                       ),
                       onTap: () {
                         launch('tel: +251961524406');
@@ -102,7 +122,7 @@ class _AboutPageState extends State<AboutPage> {
                   ),
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.message, color: Colors.amber),
+                      leading: const Icon(Icons.message, color: Colors.green),
                       title: const Text("Message"),
                       onTap: () {
                         launch('sms: +251961524406');
@@ -133,28 +153,28 @@ class _AboutPageState extends State<AboutPage> {
                 children: [
                   Card(
                     child: ListTile(
-                      leading: const Icon(Icons.web, color: Colors.amber),
+                      leading: const Icon(Icons.web, color: Colors.green),
                       title: const Text("Web App Development"),
                     ),
                   ),
                   Card(
                     child: ListTile(
                       leading: const Icon(Icons.mobile_friendly,
-                          color: Colors.amber),
+                          color: Colors.green),
                       title: const Text("Mobile App Development"),
                     ),
                   ),
                   Card(
                     child: ListTile(
                       leading: const Icon(Icons.desktop_mac_outlined,
-                          color: Colors.amber),
+                          color: Colors.green),
                       title: const Text("Desktop App Development"),
                     ),
                   ),
                   Card(
                     child: ListTile(
                       leading: const Icon(Icons.graphic_eq_outlined,
-                          color: Colors.amber),
+                          color: Colors.green),
                       title: const Text("Graphics Design"),
                     ),
                   ),
@@ -172,7 +192,7 @@ class _AboutPageState extends State<AboutPage> {
                     Icon(
                       Icons.copyright,
                       size: 15,
-                      color: Colors.amber,
+                      color: Colors.green,
                     ),
                     Text("zema choir, all rights reserved 2021."),
                   ],
@@ -183,5 +203,30 @@ class _AboutPageState extends State<AboutPage> {
         ),
       ),
     );
+  }
+}
+
+void onSelected(BuildContext context, int item) {
+  switch (item) {
+    case 0:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+      break;
+    case 1:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => ContactPage()),
+      );
+      break;
+    case 2:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FeedBack()),
+      );
+      break;
+    case 3:
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => AboutDropPage()),
+        (route) => false,
+      );
   }
 }

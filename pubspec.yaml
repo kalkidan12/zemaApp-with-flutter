@@ -36,6 +36,7 @@ dependencies:
   rating_dialog: ^2.0.3
   http: ^0.13.4
   provider: ^6.0.2
+  shimmer: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
