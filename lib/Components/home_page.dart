@@ -7,8 +7,9 @@ import 'package:zema/Components/dropdown/about_drop_down.dart';
 import 'package:zema/Components/dropdown/contact_us_page.dart';
 import 'package:zema/Components/dropdown/feedback_page.dart';
 import 'package:zema/Components/dropdown/menu_drawer.dart';
+import 'package:zema/Components/dropdown/rule_drop_page.dart';
+import 'package:zema/Components/rule_page.dart';
 import 'package:zema/Components/dropdown/teaching_drawer.dart';
-import 'package:zema/Components/favourite_page.dart';
 import 'package:zema/Components/search_page.dart';
 
 import '../main.dart';
@@ -28,7 +29,7 @@ class _HomePageState extends State<HomePage> {
   String _title = 'መዝሙሮች';
   static const List<Widget> _pages = <Widget>[
     MezmurPage(),
-    FavoritePage(),
+    RulePage(),
     TeachingPage(),
     MenuPage(),
   ];
@@ -187,7 +188,10 @@ class _HomePageState extends State<HomePage> {
             leading: Icon(Icons.rule_sharp, color: Colors.green[500]),
             title:
                 Text('ህግና ደንብ', style: TextStyle(fontWeight: FontWeight.w500)),
-            onTap: () => null,
+            onTap: () => {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => RuleDrawer()))
+            },
           ),
           ListTile(
             leading: Icon(Icons.help, color: Colors.green[500]),
@@ -245,19 +249,19 @@ class _HomePageState extends State<HomePage> {
           items: <BottomNavyBarItem>[
             BottomNavyBarItem(
                 icon: Icon(Icons.home_outlined),
-                title: Text('Home'),
+                title: Text('መዝሙሮች'),
                 textAlign: TextAlign.center,
                 activeColor: Colors.green,
                 inactiveColor: Colors.grey),
             BottomNavyBarItem(
-                icon: Icon(Icons.favorite),
-                title: Text('Favorites'),
+                icon: Icon(Icons.rule),
+                title: Text('ህግና ደንብ'),
                 textAlign: TextAlign.center,
                 activeColor: Colors.green,
                 inactiveColor: Colors.grey),
             BottomNavyBarItem(
                 icon: Icon(Icons.menu_book),
-                title: Text('Teachings'),
+                title: Text('ትምህርቶች'),
                 textAlign: TextAlign.center,
                 activeColor: Colors.green,
                 inactiveColor: Colors.grey),
@@ -284,7 +288,7 @@ class _HomePageState extends State<HomePage> {
           break;
         case 1:
           {
-            _title = 'Favorites';
+            _title = 'ህግና ደንብ';
           }
           break;
         case 2:

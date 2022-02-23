@@ -34,6 +34,7 @@ class _LoadingListPageState extends State<LoadingListPage> {
       
       
       body: Container(
+        
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
         child: Column(
