@@ -294,6 +294,21 @@ class _AboutDropPageState extends State<AboutDropPage> {
               const SizedBox(
                 height: 10,
               ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 40, right: 40, bottom: 40),
+                  child: Container(
+                    decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green),
+                          borderRadius: BorderRadius.circular(5)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text('ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
+                    ),
+                  ),
+                ),
+              ),
               const Text(
                 "  Connect with us",
                 style: TextStyle(
@@ -355,7 +370,7 @@ class _AboutDropPageState extends State<AboutDropPage> {
                     Icons.help,
                     color: Colors.green,
                   ),
-                  title: Text('About App'),
+                  title: Text('Contact Us'),
                   onTap: () {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => ContactPage()));

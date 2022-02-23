@@ -236,11 +236,27 @@ class _MenuPageState extends State<MenuPage> {
       child: Scaffold(
         
         body: Container(
+          margin: EdgeInsets.all(10),
           
           child: ListView(
             children: <Widget>[
               const SizedBox(
                 height: 10,
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 40, right: 40, bottom: 40),
+                  child: Container(
+                    decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green),
+                          borderRadius: BorderRadius.circular(5)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text('ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
+                    ),
+                  ),
+                ),
               ),
               const Text(
                 "  Connect with us",

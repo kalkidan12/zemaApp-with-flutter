@@ -78,6 +78,21 @@ class _ContactPageState extends State<ContactPage> {
             SizedBox(
               height: 15,
             ),
+            Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 40, right: 40, bottom: 40),
+                  child: Container(
+                    decoration: BoxDecoration(
+                          border: Border.all(color: Colors.green),
+                          borderRadius: BorderRadius.circular(5)
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text('ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
+                    ),
+                  ),
+                ),
+              ),
             Container(
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(left: 15.0),
