@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:zema/Components/drawer.dart';
 import 'package:zema/Components/mezmur_data.dart';
-
 
 class MezmurPage extends StatefulWidget {
   const MezmurPage({Key? key}) : super(key: key);
@@ -21,7 +19,6 @@ class _MezmurPageState extends State<MezmurPage> {
     'አለ እግዚአብሔር',
     'ፍቅር ሞተች',
     'ምን እንላለን',
-    
   ];
 
   static List<String> content = [
@@ -92,8 +89,9 @@ class _MezmurPageState extends State<MezmurPage> {
                               Text(
                                 title[index],
                                 style: const TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,),
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ],
                           ),
@@ -135,8 +133,6 @@ class _MezmurPageState extends State<MezmurPage> {
               ),
             );
           }),
-      drawer: NavigationDrawerWidget(),
     );
   }
 }
-

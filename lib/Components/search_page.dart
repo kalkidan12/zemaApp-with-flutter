@@ -17,7 +17,7 @@ class SearchPage extends StatelessWidget {
       appBar: AppBar(
           // The search area here
           title: Container(
-        width: double.infinity,
+        // width: double.infinity,
         height: 40,
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(5)),
@@ -37,8 +37,8 @@ class SearchPage extends StatelessWidget {
           ),
         ),
       )),
-      body: Padding(
-        padding: const EdgeInsets.only(top:8.0),
+      body: const Padding(
+        padding: const EdgeInsets.only(top: 8.0),
         child: MezmurPage(),
       ),
     );

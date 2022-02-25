@@ -6,7 +6,6 @@ import 'package:zema/Components/home_page.dart';
 import 'package:zema/Components/search_page.dart';
 import 'package:zema/main.dart';
 
-
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
 
@@ -15,7 +14,7 @@ class ContactPage extends StatefulWidget {
 }
 
 class _ContactPageState extends State<ContactPage> {
-  var _title = 'Contact Us';
+  final _title = 'Contact Us';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,14 +27,16 @@ class _ContactPageState extends State<ContactPage> {
                 backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
                     ? Colors.green
                     : Color.fromARGB(255, 102, 97, 97),
-                leading: IconButton(onPressed: () {
-                               Navigator.push(
-                               context, MaterialPageRoute(builder: (context) => HomePage()));
-                             },icon: Icon(Icons.arrow_back)),
+                leading: IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                    icon: Icon(Icons.arrow_back)),
                 actions: [
                   IconButton(
-                    onPressed: ()=>Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
+                    onPressed: () => Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => SearchPage())),
                     icon: Icon(Icons.search),
                   ),
                   PopupMenuButton<int>(
@@ -81,20 +82,21 @@ class _ContactPageState extends State<ContactPage> {
               height: 15,
             ),
             Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 40, right: 40, bottom: 40),
-                  child: Container(
-                    decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(5)
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text('ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
-                    ),
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    top: 10, left: 40, right: 40, bottom: 40),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.green),
+                      borderRadius: BorderRadius.circular(5)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                        'ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
                   ),
                 ),
               ),
+            ),
             Container(
               alignment: Alignment.centerLeft,
               margin: const EdgeInsets.only(left: 15.0),
@@ -211,7 +213,7 @@ class _ContactPageState extends State<ContactPage> {
                       size: 15,
                       color: Colors.green,
                     ),
-                    Text("zema choir, all rights reserved 2021."),
+                    Text("zema choir, all rights reserved 2022."),
                   ],
                 ),
               ),

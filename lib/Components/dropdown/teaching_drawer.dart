@@ -44,14 +44,16 @@ class _LoadingListPageState extends State<LoadingListPage> {
                 backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
                     ? Colors.green
                     : Color.fromARGB(255, 102, 97, 97),
-                leading: IconButton(onPressed: () {
-                               Navigator.push(
-                               context, MaterialPageRoute(builder: (context) => HomePage()));
-                             },icon: Icon(Icons.arrow_back)),
+                leading: IconButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                    icon: Icon(Icons.arrow_back)),
                 actions: [
                   IconButton(
-                    onPressed: ()=>Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
+                    onPressed: () => Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => SearchPage())),
                     icon: Icon(Icons.search),
                   ),
                   PopupMenuButton<int>(
@@ -64,7 +66,6 @@ class _LoadingListPageState extends State<LoadingListPage> {
                       PopupMenuItem<int>(
                         value: 0,
                         child: Text('መዝሙሮች'),
-                        
                       ),
                       PopupMenuItem<int>(
                         value: 1,

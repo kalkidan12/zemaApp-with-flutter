@@ -6,6 +6,7 @@ import 'package:zema/Components/dropdown/contact_us_page.dart';
 import 'package:zema/Components/dropdown/feedback_page.dart';
 import 'package:zema/Components/home_page.dart';
 import 'package:zema/Components/menu_page.dart';
+import 'package:zema/main.dart';
 import 'mezmur_page.dart';
 
 class MezmurDataModel {
@@ -23,11 +24,13 @@ class MezmurDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
+            ? Colors.green
+            : Color.fromARGB(255, 102, 97, 97),
         title: Text(
           mezmurDataModel.title,
           style: const TextStyle(
-            fontSize: 15,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -70,4 +73,3 @@ class MezmurDetail extends StatelessWidget {
     );
   }
 }
-

@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:rating_dialog/rating_dialog.dart';
 import 'package:zema/Components/dropdown/contact_us_page.dart';
 
-
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
 
@@ -234,10 +233,8 @@ class _MenuPageState extends State<MenuPage> {
         return Future.value(false);
       },
       child: Scaffold(
-        
         body: Container(
           margin: EdgeInsets.all(10),
-          
           child: ListView(
             children: <Widget>[
               const SizedBox(
@@ -245,15 +242,16 @@ class _MenuPageState extends State<MenuPage> {
               ),
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 40, right: 40, bottom: 40),
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 40, right: 40, bottom: 40),
                   child: Container(
                     decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(5)
-                    ),
+                        border: Border.all(color: Colors.green),
+                        borderRadius: BorderRadius.circular(5)),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Text('ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
+                      child: Text(
+                          'ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
                     ),
                   ),
                 ),

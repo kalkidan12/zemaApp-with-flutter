@@ -227,7 +227,7 @@ class _AboutDropPageState extends State<AboutDropPage> {
         });
   }
 
-  var _title = 'About';
+  final _title = 'About';
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -237,60 +237,59 @@ class _AboutDropPageState extends State<AboutDropPage> {
       },
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(70),
-          child: SafeArea(
-            child: Card(
-              child: AppBar(
-                title: Text(_title),
-                backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
-                    ? Colors.green
-                    : Color.fromARGB(255, 102, 97, 97),
-                leading: IconButton(onPressed: () {
-                               Navigator.push(
-                               context, MaterialPageRoute(builder: (context) => HomePage()));
-                             },icon: Icon(Icons.arrow_back)),
-                actions: [
-                  IconButton(
-                    onPressed: () => Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (_) => SearchPage())),
-                    icon: Icon(Icons.search),
-                  ),
-                  PopupMenuButton<int>(
-                    icon: Icon(Icons.arrow_drop_down_circle_outlined),
-                    color: MyApp.themeNotifier.value == ThemeMode.light
-                        ? Color.fromARGB(255, 244, 247, 244)
-                        : Color.fromARGB(255, 70, 68, 68),
-                    
-                    onSelected: (item) => onSelected(context, item),
-                    itemBuilder: (context) => [
-                      PopupMenuItem<int>(
-                        value: 0,
-                        child: Text('መዝሙሮች'),
-                        
-                      ),
-                      PopupMenuItem<int>(
-                        value: 1,
-                        child: Text('Contact Us'),
-                      ),
-                      PopupMenuItem<int>(
-                        value: 2,
-                        child: Text('Feedback'),
-                       
-                      ),
-                      PopupMenuItem<int>(
-                        value: 3,
-                        child: Text('About'),
-                      ),
-                    ],
-                  )
-                ],
+            preferredSize: const Size.fromHeight(70),
+            child: SafeArea(
+              child: Card(
+                child: AppBar(
+                  title: Text(_title),
+                  backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
+                      ? Colors.green
+                      : Color.fromARGB(255, 102, 97, 97),
+                  leading: IconButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomePage()));
+                      },
+                      icon: Icon(Icons.arrow_back)),
+                  actions: [
+                    IconButton(
+                      onPressed: () => Navigator.of(context).push(
+                          MaterialPageRoute(builder: (_) => SearchPage())),
+                      icon: Icon(Icons.search),
+                    ),
+                    PopupMenuButton<int>(
+                      icon: Icon(Icons.arrow_drop_down_circle_outlined),
+                      color: MyApp.themeNotifier.value == ThemeMode.light
+                          ? Color.fromARGB(255, 244, 247, 244)
+                          : Color.fromARGB(255, 70, 68, 68),
+                      onSelected: (item) => onSelected(context, item),
+                      itemBuilder: (context) => [
+                        PopupMenuItem<int>(
+                          value: 0,
+                          child: Text('መዝሙሮች'),
+                        ),
+                        PopupMenuItem<int>(
+                          value: 1,
+                          child: Text('Contact Us'),
+                        ),
+                        PopupMenuItem<int>(
+                          value: 2,
+                          child: Text('Feedback'),
+                        ),
+                        PopupMenuItem<int>(
+                          value: 3,
+                          child: Text('About'),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          )),
-      extendBodyBehindAppBar: false,
-        
+            )),
+        extendBodyBehindAppBar: false,
         body: Container(
-          
           child: ListView(
             children: <Widget>[
               const SizedBox(
@@ -298,15 +297,16 @@ class _AboutDropPageState extends State<AboutDropPage> {
               ),
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 40, right: 40, bottom: 40),
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 40, right: 40, bottom: 40),
                   child: Container(
                     decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green),
-                          borderRadius: BorderRadius.circular(5)
-                    ),
+                        border: Border.all(color: Colors.green),
+                        borderRadius: BorderRadius.circular(5)),
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: Text('ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
+                      child: Text(
+                          'ይህ መተግበሪያ በቡታጅራ ቁጥር ሁለት ሙሉ ወንጌል ቤ/ን ለሚገኘው ለዜማ መዘምራን መዝሙር ለማጥናት የተሰራ ነው።'),
                     ),
                   ),
                 ),
