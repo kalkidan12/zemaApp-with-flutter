@@ -1,4 +1,4 @@
-# demo
+# client
 
 A new Flutter project.
 
