@@ -3,6 +3,7 @@ import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
 import '../../main.dart';
+import '../home_page.dart';
 
 class GalleryPage extends StatelessWidget {
   final imageList = [
@@ -52,6 +53,12 @@ class GalleryPage extends StatelessWidget {
         backgroundColor: MyApp.themeNotifier.value == ThemeMode.light
             ? Colors.green
             : Color.fromARGB(255, 102, 97, 97),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            },
+            icon: Icon(Icons.arrow_back)),
       ),
       // Implemented with a PageView, simpler than setting it up yourself
       // You can either specify images directly or by using a builder as in this tutorial

@@ -173,6 +173,17 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
+                leading: Icon(Icons.photo_camera, color: Colors.green[500]),
+                title: Text(
+                  'Gallery',
+                  style: TextStyle(fontWeight: FontWeight.w400),
+                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GalleryPage()));
+                },
+              ),
+              ListTile(
                 leading: Icon(Icons.menu_book, color: Colors.green[500]),
                 title: Text('ትምህርቶች',
                     style: TextStyle(fontWeight: FontWeight.w500)),
