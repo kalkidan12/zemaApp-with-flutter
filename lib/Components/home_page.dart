@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:zema/Components/dropdown/about_drop_down.dart';
 import 'package:zema/Components/dropdown/contact_us_page.dart';
 import 'package:zema/Components/dropdown/feedback_page.dart';
+import 'package:zema/Components/dropdown/gallery_page.dart';
 import 'package:zema/Components/dropdown/menu_drawer.dart';
 import 'package:zema/Components/dropdown/rule_drop_page.dart';
 import 'package:zema/Components/rule_page.dart';
@@ -119,15 +120,20 @@ class _HomePageState extends State<HomePage> {
                         ),
                         PopupMenuItem<int>(
                           value: 1,
-                          child: Text('Contact Us'),
+                          child: Text('gallery'),
+                          // onTap: show,
                         ),
                         PopupMenuItem<int>(
                           value: 2,
+                          child: Text('Contact Us'),
+                        ),
+                        PopupMenuItem<int>(
+                          value: 3,
                           child: Text('Feedback'),
                           // onTap: show,
                         ),
                         PopupMenuItem<int>(
-                          value: 3,
+                          value: 4,
                           child: Text('About'),
                         ),
                       ],
@@ -187,7 +193,8 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
-                leading: FaIcon(FontAwesomeIcons.weebly, color: Colors.green[500]),
+                leading:
+                    FaIcon(FontAwesomeIcons.weebly, color: Colors.green[500]),
                 title: Text('ስለ እኛ',
                     style: TextStyle(fontWeight: FontWeight.w500)),
                 onTap: () {
@@ -198,7 +205,10 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               ListTile(
-                leading: FaIcon(FontAwesomeIcons.telegram, color: Colors.green[500],),
+                leading: FaIcon(
+                  FontAwesomeIcons.telegram,
+                  color: Colors.green[500],
+                ),
                 title: Text('ቴሌግራም ገጽ',
                     style: TextStyle(fontWeight: FontWeight.w500)),
                 onTap: () async {
@@ -309,15 +319,20 @@ void onSelected(BuildContext context, int item) {
       break;
     case 1:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => ContactPage()),
+        MaterialPageRoute(builder: (context) => GalleryPage()),
       );
       break;
     case 2:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => FeedBack()),
+        MaterialPageRoute(builder: (context) => ContactPage()),
       );
       break;
     case 3:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FeedBack()),
+      );
+      break;
+    case 4:
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => AboutDropPage()),
         (route) => false,

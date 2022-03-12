@@ -6,6 +6,8 @@ import 'package:zema/Components/home_page.dart';
 import 'package:zema/Components/search_page.dart';
 import 'package:zema/main.dart';
 
+import 'gallery_page.dart';
+
 class ContactPage extends StatefulWidget {
   const ContactPage({Key? key}) : super(key: key);
 
@@ -49,22 +51,23 @@ class _ContactPageState extends State<ContactPage> {
                       PopupMenuItem<int>(
                         value: 0,
                         child: Text('መዝሙሮች'),
-                        // onTap: () {
-                        //       Navigator.push(
-                        //       context, MaterialPageRoute(builder: (context) => HomePage()));
-                        //       },
                       ),
                       PopupMenuItem<int>(
                         value: 1,
-                        child: Text('Contact Us'),
+                        child: Text('gallery'),
+                        // onTap: show,
                       ),
                       PopupMenuItem<int>(
                         value: 2,
+                        child: Text('Contact Us'),
+                      ),
+                      PopupMenuItem<int>(
+                        value: 3,
                         child: Text('Feedback'),
                         // onTap: show,
                       ),
                       PopupMenuItem<int>(
-                        value: 3,
+                        value: 4,
                         child: Text('About'),
                       ),
                     ],
@@ -234,15 +237,20 @@ void onSelected(BuildContext context, int item) {
       break;
     case 1:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => ContactPage()),
+        MaterialPageRoute(builder: (context) => GalleryPage()),
       );
       break;
     case 2:
       Navigator.of(context).push(
-        MaterialPageRoute(builder: (context) => FeedBack()),
+        MaterialPageRoute(builder: (context) => ContactPage()),
       );
       break;
     case 3:
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) => FeedBack()),
+      );
+      break;
+    case 4:
       Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(builder: (context) => AboutDropPage()),
         (route) => false,
